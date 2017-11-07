@@ -15,6 +15,12 @@ class OKCoinSpot:
         self.__api_key = api_key
         self.__secret_key = secret_key
 
+    # 获取OKEX合约行情信息
+    def future_ticker(self, **kwargs):
+        depth_resource = "/api/v1/future_ticker.do"
+        params = '&'.join([k + '=' + str(v) for k, v in kwargs.items()])
+        return http_get(self.__url, depth_resource, params)
+
     # 获取OKCOIN现货行情信息
     def ticker(self, symbol=''):
         ticker_resource = "/api/v1/ticker.do"
