@@ -13,6 +13,16 @@ configs = {
                     'ticker'
                 }
             }
+        },
+        'okex.com':{
+            'rest':{
+                'btc':{
+                    'future_ticker_this_week',
+                    'future_ticker_next_week',
+                    'future_ticker_quarter',
+                    'ticker'
+                }
+            }
         }
     }
 }

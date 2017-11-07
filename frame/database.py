@@ -97,11 +97,11 @@ if __name__ == '__main__':
             'port': 27017,
             'user': 'root',
             'password': "'",
-            'database': 'crawler'
+            'database': 'btc_ticker'
         }
     }
-    s = 'okcoincn_rest_btc_ticker'
-    a = DataBase(configs['db'], ['okcoincn_rest_btc_ticker'])
+    s = 'okcoincom_rest_btc_ticker'
+    a = DataBase(configs['db'])
     # c = a.find_one(s)
     col = a.get_collection(s)
     print(col)
