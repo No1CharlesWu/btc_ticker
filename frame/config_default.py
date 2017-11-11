@@ -23,6 +23,9 @@ configs = {
                     'ticker'
                 }
             }
+        },
+        'write':{
+            'json'
         }
     }
 }
