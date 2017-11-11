@@ -1,7 +1,8 @@
+import copy
 import time
 from frame import taskbase
 from library import okcoin_spot_api
-
+from task import write_json
 
 class Task(taskbase.TaskBase):
     def do(self):
@@ -17,7 +18,7 @@ class Task(taskbase.TaskBase):
         :param symbol: 'btc_cny' 'ltc_cny'
         :return:
         """
-        print('okcoincom_rest_btc_ticker')
+        print(self.module_name)
         # 设置下次添加此任务的间隔时间，若不设置，则self.loop = False self.interval = -1 为不再添加此项任务
         self.set_interval(1)
 
@@ -30,13 +31,15 @@ class Task(taskbase.TaskBase):
         okcoin_spot = okcoin_spot_api.OKCoinSpot(okcoin_rest_url, api_key, secret_key)
 
         try:
-            data = okcoin_spot.ticker('btc_usd')
+            self.data = okcoin_spot.ticker('btc_usd')
         except Exception as e:
             print('Exception rest_ticker:', e)
             return
 
+    def do_after(self):
         # print(time.strftime("%H:%M:%S"), data, type(data))
-        self.result = self.data_filter(data)
+        self.result = self.data_filter(self.data)
+        write_json.all_dict[self.module_name] = copy.deepcopy(self.result)
 
         self.data_insert()
 
