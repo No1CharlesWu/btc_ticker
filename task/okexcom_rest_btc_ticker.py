@@ -42,7 +42,9 @@ class Task(taskbase.TaskBase):
         self.result = self.data_filter(self.data)
         # print(time.strftime("%H:%M:%S"), self.result, type(self.result))
         write_json.all_dict[self.module_name] = copy.deepcopy(self.result)
-
+        # temp_dict = copy.deepcopy(self.result)
+        # temp_dict['type'] = self.module_name
+        # write_json.all_list.append(temp_dict)
         self.data_insert()
 
 
