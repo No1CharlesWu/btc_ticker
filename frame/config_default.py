@@ -24,6 +24,13 @@ configs = {
                 }
             }
         },
+        'bitfinex.com':{
+            'rest':{
+                'btc':{
+                    'ticker'
+                }
+            }
+        },
         'write':{
             'json'
         }

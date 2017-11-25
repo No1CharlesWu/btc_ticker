@@ -24,6 +24,7 @@ class TaskBase(object):
         self.db = db
         self.module_name = module_name
         self.set_interval()
+        self.data = None
 
     def do(self):
         """
