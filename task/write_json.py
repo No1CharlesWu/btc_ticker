@@ -11,7 +11,7 @@ class Task(taskbase.TaskBase):
         # 设置下次添加此任务的间隔时间，若不设置，则self.loop = False self.interval = -1 为不再添加此项任务
         self.set_interval(2)
 
-        with open("/Users/charles/Sites/test.json","w") as f:
+        with open("~/Sites/test.json","w") as f:
             write_dict = copy.deepcopy(all_dict)
             for k,v in write_dict.items():
                 v['type'] = k
