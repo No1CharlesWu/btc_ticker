@@ -32,22 +32,23 @@ class Task(taskbase.TaskBase):
                 print("bad request")
                 return
             else:
-                print("unknown response")
+                print("unknown response.status_code == %d" %response.status_code)
                 return
         except Exception as e:
             print('Exception rest_ticker:', e)
             return
 
-        print(self.data)
-        print(type(self.data))
+        # print(self.data)
+        # print(type(self.data))
         # print(self.data['bid'])
 
     def do_after(self):
-        # print(time.strftime("%H:%M:%S"), data, type(data))
-        self.result = self.data_filter(self.data)
-        # print(time.strftime("%H:%M:%S"), self.result, type(self.result))
-        write_json.all_dict[self.module_name] = copy.deepcopy(self.result)
-        self.data_insert()
+        if self.data == None:
+            return
+        else:
+            self.result = self.data_filter(self.data)
+            write_json.all_dict[self.module_name] = copy.deepcopy(self.result)
+            self.data_insert()
 
 
     def data_filter(self, data):

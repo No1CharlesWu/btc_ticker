@@ -45,13 +45,14 @@ class Schedule(object):
 
             try:
                 time.sleep(0.1)
-                print("(active worker threads: %i)" % (threadpool.threading.activeCount() - 1,))
+                # print("(active worker threads: %i)" % (threadpool.threading.activeCount() - 1,))
                 self.thread_pool.poll()
             except KeyboardInterrupt:
                 print("**** Interrupted!")
                 break
             except threadpool.NoResultsPending:
-                print("**** No pending results.")
+                pass
+                # print("**** No pending results.")
 
         if self.thread_pool.dismissedWorkers:
             print("Joining all dismissed worker threads...")

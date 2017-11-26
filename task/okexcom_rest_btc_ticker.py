@@ -38,14 +38,12 @@ class Task(taskbase.TaskBase):
             return
 
     def do_after(self):
-        # print(time.strftime("%H:%M:%S"), data, type(data))
-        self.result = self.data_filter(self.data)
-        # print(time.strftime("%H:%M:%S"), self.result, type(self.result))
-        write_json.all_dict[self.module_name] = copy.deepcopy(self.result)
-        # temp_dict = copy.deepcopy(self.result)
-        # temp_dict['type'] = self.module_name
-        # write_json.all_list.append(temp_dict)
-        self.data_insert()
+        if self.data == None:
+            return
+        else:
+            self.result = self.data_filter(self.data)
+            write_json.all_dict[self.module_name] = copy.deepcopy(self.result)
+            self.data_insert()
 
 
     def data_filter(self, data):
