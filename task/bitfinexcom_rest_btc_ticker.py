@@ -35,7 +35,7 @@ class Task(taskbase.TaskBase):
                 print("unknown response.status_code == %d" %response.status_code)
                 return
         except Exception as e:
-            print('Exception rest_ticker:', e)
+            print('Exception bitfinex_ticker:', e)
             return
 
         # print(self.data)
