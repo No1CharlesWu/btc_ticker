@@ -26,8 +26,8 @@ class Schedule(object):
         self.time_task_list = list()
 
         con = config.Config()
+        print(con.task)
         self.db = database.DataBase(con.db)
-
         while True:
             con = config.Config()
             self.l_add_task = con.added_task(self.l_task)

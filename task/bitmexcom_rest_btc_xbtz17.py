@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @Time    : 17/12/2017 16:34
 # @Author  : Charles
-# @File    : bitmexcom_rest_btc_XBTUSD.py.py
+# @File    : bitmexcom_rest_btc_xbtusd.py.py
 # @Software: PyCharm Community Edition
 
 import copy
@@ -46,7 +46,7 @@ class Task(taskbase.TaskBase):
             bitmex_basic_request = SwaggerClient.from_url(SWAGGER_URI, config=config)
             # bitmex_authenticated_request = SwaggerClient.from_url(SWAGGER_URI, config=config,http_client=request_client)
 
-            response_orderbook = bitmex_basic_request.OrderBook.OrderBook_get(symbol='XBTUSD', depth=1).result()
+            response_orderbook = bitmex_basic_request.OrderBook.OrderBook_get(symbol='XBTZ17', depth=1).result()
             response_stats = bitmex_basic_request.Stats.Stats_get().result()
 
             self.data = self.getData(response_orderbook, response_stats)
@@ -57,7 +57,7 @@ class Task(taskbase.TaskBase):
     def getData(self, orderbook, stats):
         r = dict()
         for d in orderbook:
-            if d['symbol'] == 'XBTUSD':
+            if d['symbol'] == 'XBTZ17':
                 r['buy'] = d['bidPrice']
                 r['sell'] = d['askPrice']
                 r['timestamp'] = d['timestamp'].timestamp()*1000

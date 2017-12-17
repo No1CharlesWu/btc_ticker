@@ -34,8 +34,8 @@ configs = {
         'bitmex.com':{
             'rest':{
                 'btc':{
-                    'XBTUSD'
-                    'XBTZ17'
+                    'xbtusd',
+                    'xbtz17'
                 }
             }
         },
