@@ -21,7 +21,7 @@ class Task(taskbase.TaskBase):
             # json.dump(write_dict,f)
             json.dump(all_list, f)
             all_list.clear()
-            print("加载入文件完成...")
+            print("finish..")
 
 if __name__ == '__main__':
     while(1):
