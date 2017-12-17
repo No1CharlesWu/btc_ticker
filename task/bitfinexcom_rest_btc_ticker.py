@@ -48,7 +48,7 @@ class Task(taskbase.TaskBase):
         else:
             self.result = self.data_filter(self.data)
             write_json.all_dict[self.module_name] = copy.deepcopy(self.result)
-            self.data_insert()
+            # self.data_insert()
 
 
     def data_filter(self, data):
