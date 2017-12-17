@@ -15,7 +15,7 @@ class Task(taskbase.TaskBase):
     def do(self):
         print(self.module_name)
         # 设置下次添加此任务的间隔时间，若不设置，则self.loop = False self.interval = -1 为不再添加此项任务
-        self.set_interval(1)
+        self.set_interval(3)
 
         # 初始化api_key，secret_key,url
         API_KEY = 'SwcHA0YKoYai55_aDRnwP6v9'
