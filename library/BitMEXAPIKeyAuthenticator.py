@@ -33,8 +33,7 @@ class APIKeyAuthenticator(Authenticator):
         prepared = r.prepare()
         body = prepared.body or ''
         url = prepared.path_url
-        r.headers['api-signature'] = self.generate_signature(self.api_secret, r.method, r.url, expires,
-                                                             r.body if hasattr(r, 'body') else '')
+        r.headers['api-signature'] = self.generate_signature(self.api_secret, r.method, r.url, expires, r.body if hasattr(r, 'body') else '')
         # print(json.dumps(r.data,  separators=(',',':')))
         return r
 

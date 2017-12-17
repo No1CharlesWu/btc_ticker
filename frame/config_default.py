@@ -31,6 +31,14 @@ configs = {
                 }
             }
         },
+        'bitmex.com':{
+            'rest':{
+                'btc':{
+                    'XBTUSD'
+                    'XBTZ17'
+                }
+            }
+        },
         'write':{
             'json'
         }

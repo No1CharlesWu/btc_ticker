@@ -5,15 +5,14 @@
 # @File    : bitmexClient.py.py
 # @Software: PyCharm Community Edition
 
-#!/usr/bin/env python
-
 from bravado.client import SwaggerClient
 from bravado.requests_client import RequestsClient
-from BitMEXAPIKeyAuthenticator import APIKeyAuthenticator
+from library.BitMEXAPIKeyAuthenticator import APIKeyAuthenticator
 import json
 import pprint
 
-HOST = "https://testnet.bitmex.com"
+
+HOST = "https://www.bitmex.com"
 SPEC_URI = HOST + "/api/explorer/swagger.json"
 
 # See full config options at http://bravado.readthedocs.io/en/latest/configuration.html
@@ -53,8 +52,8 @@ print("Status Code: %d, headers: %s" % (http_response.status_code, http_response
 # To do authentication, you must generate an API key.
 # Do so at https://testnet.bitmex.com/app/apiKeys
 
-API_KEY = '<API_KEY_HERE>'
-API_SECRET = '<API_SECRET_HERE>'
+API_KEY = 'SwcHA0YKoYai55_aDRnwP6v9'
+API_SECRET = 'ere_BrBO7BLNHK290zAPLzhBhII2zUrsWM3gG0R3MbJgtXxp'
 
 request_client = RequestsClient()
 request_client.authenticator = APIKeyAuthenticator(HOST, API_KEY, API_SECRET)
