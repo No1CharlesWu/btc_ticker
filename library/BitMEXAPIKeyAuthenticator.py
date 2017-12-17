@@ -1,7 +1,7 @@
-import urlparse
 import time
 import hashlib
 import hmac
+from urllib.parse import urlparse, urlencode
 from bravado.requests_client import Authenticator
 
 
@@ -33,8 +33,9 @@ class APIKeyAuthenticator(Authenticator):
         prepared = r.prepare()
         body = prepared.body or ''
         url = prepared.path_url
+        r.headers['api-signature'] = self.generate_signature(self.api_secret, r.method, r.url, expires,
+                                                             r.body if hasattr(r, 'body') else '')
         # print(json.dumps(r.data,  separators=(',',':')))
-        r.headers['api-signature'] = self.generate_signature(self.api_secret, r.method, url, expires, body)
         return r
 
     # Generates an API signature.
@@ -52,12 +53,12 @@ class APIKeyAuthenticator(Authenticator):
     def generate_signature(self, secret, verb, url, nonce, data):
         """Generate a request signature compatible with BitMEX."""
         # Parse the url so we can remove the base and extract just the path.
-        parsedURL = urlparse.urlparse(url)
+        parsedURL = urlparse(url)
         path = parsedURL.path
         if parsedURL.query:
             path = path + '?' + parsedURL.query
 
-        message = bytes(verb + path + str(nonce) + data).encode('utf-8')
+        message = bytes(verb + path + str(nonce) + data, encoding='utf-8')
         # print("Computing HMAC: %s" % message)
 
         signature = hmac.new(secret, message, digestmod=hashlib.sha256).hexdigest()
