@@ -51,7 +51,7 @@ class Task(taskbase.TaskBase):
 
             self.data = self.getData(response_orderbook, response_stats)
         except Exception as e:
-            print('Exception bitfinex_ticker:', e)
+            print('Exception xbtz17:', e)
             return
 
     def getData(self, orderbook, stats):
@@ -71,7 +71,6 @@ class Task(taskbase.TaskBase):
             return
         else:
             self.result = self.data_filter(self.data)
-            print(self.result)
             write_json.all_dict[self.module_name] = copy.deepcopy(self.result)
             self.data_insert()
 
