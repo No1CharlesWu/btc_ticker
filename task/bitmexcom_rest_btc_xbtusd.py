@@ -56,7 +56,7 @@ class Task(taskbase.TaskBase):
                 r['sell'] = d['askPrice']
                 # 格式没匹配上
                 # r['timestamp'] = datetime.strptime(d['timestamp'], '%Y-%m-%dT%H:%M:%S.SSSZ')
-                r['timestamp'] = int(datetime.now().timestamp()*1000)
+                r['timestamp'] = int(datetime.now().timestamp())
         for d in stats:
             if d['rootSymbol'] == 'XBT':
                 r['vol'] = d['turnover24h']
