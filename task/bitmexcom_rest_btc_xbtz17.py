@@ -43,12 +43,12 @@ class Task(taskbase.TaskBase):
             if response_orderbook.status_code == 200:
                 orderbook = json.loads(response_orderbook.text)
             else:
-                orderbook = []
+                orderbook = [{'symbol': 'XBTZ17','bidPrice':0,'askPrice':0}]
             response_stats = requests.request("GET", "https://www.bitmex.com/api/v1/stats")
             if response_orderbook.status_code == 200:
                 stats = json.loads(response_stats.text)
             else:
-                stats = []
+                stats = [{'rootSymbol':'XBT', 'vol':0}]
 
             self.data = self.getData(orderbook, stats)
         except Exception as e:
