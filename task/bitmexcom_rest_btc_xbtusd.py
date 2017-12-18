@@ -59,7 +59,7 @@ class Task(taskbase.TaskBase):
                 r['timestamp'] = int(datetime.now().timestamp())
         for d in stats:
             if d['rootSymbol'] == 'XBT':
-                r['vol'] = d['turnover24h']
+                r['vol'] = d['volume24h']
         return r
 
     def do_after(self):
