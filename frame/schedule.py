@@ -5,7 +5,6 @@ import datetime
 import random
 from frame import config
 from frame import database
-from task import bitmexcom_rest_btc_xbtusd, bitmexcom_rest_btc_xbtz17
 """
 使用线程池做任务分发调度。
 """
@@ -92,11 +91,7 @@ class Schedule(object):
         try:
             task_module = importlib.import_module(self.TASK + '.' + args[0])
         except ModuleNotFoundError:
-            if random.randint(0,1):
-                task_module = bitmexcom_rest_btc_xbtusd
-            else:
-                task_module = bitmexcom_rest_btc_xbtz17
-
+            raise
         except Exception:
             raise
         result = task_module.Task(args[0], kwargs['db'])
