@@ -9,9 +9,6 @@ from task import write_json
 from datetime import datetime
 import requests
 
-from library.BitMEXAPIKeyAuthenticator import APIKeyAuthenticator
-
-
 class Task(taskbase.TaskBase):
     def do(self):
         print(self.module_name)
